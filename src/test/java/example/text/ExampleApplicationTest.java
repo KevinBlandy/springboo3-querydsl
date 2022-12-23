@@ -31,31 +31,31 @@ public class ExampleApplicationTest {
 	@PersistenceContext
 	protected EntityManager entityManager;
 	
-@Test
-@Transactional(readOnly = true)
-public void test () {
-	var tag = QTag.tag;
-	var postTag = QPostTag.postTag;
-	var post = QPost.post;
-	
-	var query = new JPAQueryFactory(this.entityManager);
-	
-	SimpleExpression<Long> postCount = Expressions.as(JPAExpressions
-				.select(Expressions.ONE.count())
-				.from(postTag)
-				.innerJoin(post).on(post.id.eq(postTag.postId))
-				.where(postTag.tagId.eq(tag.id)
-					.and(post.enabled.eq(true)	
-					.and(post.deleted.eq(0L))) 
-				)
-		, "post_count");
-	
-	var tuple = query.select(tag.id, tag.title, tag.icon, tag.instruction, tag.enabled, tag.path, postCount)
-			.from(tag)
-			.where(tag.id.eq(10000L))
-			.fetchOne();
-	
-	log.info("tuple:{}", tuple);
-}
+	@Test
+	@Transactional(readOnly = true)
+	public void test () {
+		var tag = QTag.tag;
+		var postTag = QPostTag.postTag;
+		var post = QPost.post;
+		
+		var query = new JPAQueryFactory(this.entityManager);
+		
+		SimpleExpression<Long> postCount = Expressions.as(JPAExpressions
+					.select(Expressions.ONE.count())
+					.from(postTag)
+					.innerJoin(post).on(post.id.eq(postTag.postId))
+					.where(postTag.tagId.eq(tag.id)
+						.and(post.enabled.eq(true)	
+						.and(post.deleted.eq(0L))) 
+					)
+			, "post_count");
+		
+		var tuple = query.select(tag.id, tag.title, tag.icon, tag.instruction, tag.enabled, tag.path, postCount)
+				.from(tag)
+				.where(tag.id.eq(10000L))
+				.fetchOne();
+		
+		log.info("tuple:{}", tuple);
+	}
 	
 }
