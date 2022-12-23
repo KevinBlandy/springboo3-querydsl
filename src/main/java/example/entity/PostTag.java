@@ -3,11 +3,11 @@ package example.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Index;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.IdClass;
+import javax.persistence.Index;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -18,12 +18,12 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 @IdClass(PostTag.Id.class)
 public class PostTag {
 
-	@jakarta.persistence.Id
+	@javax.persistence.Id
 	@JsonSerialize(using = ToStringSerializer.class)
 	@Column(name = "post_id", columnDefinition = "BIGINT UNSIGNED COMMENT '帖子ID'")
 	private Long postId;
 
-	@jakarta.persistence.Id
+	@javax.persistence.Id
 	@JsonSerialize(using = ToStringSerializer.class)
 	@Column(name = "tag_id", columnDefinition = "BIGINT UNSIGNED COMMENT '标签ID'")
 	private Long tagId;

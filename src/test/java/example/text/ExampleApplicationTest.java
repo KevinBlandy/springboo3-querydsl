@@ -18,8 +18,8 @@ import example.ExampleApplication;
 import example.entity.QPost;
 import example.entity.QPostTag;
 import example.entity.QTag;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 
 @RunWith(SpringRunner.class)

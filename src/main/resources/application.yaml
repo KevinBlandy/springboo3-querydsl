@@ -3,7 +3,7 @@ server:
   
 logging:
   level:
-    "org.hibernate.orm.jdbc.bind": TRACE
+    "org.hibernate.type.descriptor.sql.BasicBinder": TRACE
 
 spring:
   datasource:
